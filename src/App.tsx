@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import HSCDashboard from './pages/HSCDashboard';
 import English2ndPaperDashboard from './pages/English2ndPaperDashboard';
 import CompletingSentence from './pages/CompletingSentence';
+import ModifierTopic from './pages/ModifierTopic';
 import ComingSoon from './pages/ComingSoon';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/dashboard/hsc" element={<HSCDashboard />} />
               <Route path="/dashboard/hsc/english-2nd" element={<English2ndPaperDashboard />} />
               <Route path="/dashboard/hsc/english-2nd/completing-sentence" element={<CompletingSentence />} />
+              <Route path="/dashboard/hsc/english-2nd/modifier" element={<ModifierTopic />} />
               <Route path="/coming-soon" element={<ComingSoon />} />
             </Routes>
           </div>

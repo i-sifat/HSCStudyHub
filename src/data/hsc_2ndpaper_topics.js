@@ -24,6 +24,14 @@ export const hsc2ndPaperTopics = [
     route: '/coming-soon'
   },
   {
+    id: 'modifier',
+    name: 'Modifier',
+    description: 'Pre-modifier and post-modifier rules and exercises',
+    icon: '🔧',
+    color: 'bg-cyan-50 border-cyan-200 text-cyan-800',
+    route: '/dashboard/hsc/english-2nd/modifier'
+  },
+  {
     id: 'prepositions',
     name: 'Prepositions',
     description: 'Proper use of prepositions',
