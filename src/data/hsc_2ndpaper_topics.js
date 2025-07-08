@@ -32,6 +32,14 @@ export const hsc2ndPaperTopics = [
     route: '/dashboard/hsc/english-2nd/modifier'
   },
   {
+    id: 'connectors',
+    name: 'Connectors',
+    description: 'Sentence connectors and linking words for coherent writing',
+    icon: '🔗',
+    color: 'bg-emerald-50 border-emerald-200 text-emerald-800',
+    route: '/dashboard/hsc/english-2nd/connectors'
+  },
+  {
     id: 'prepositions',
     name: 'Prepositions',
     description: 'Proper use of prepositions',
