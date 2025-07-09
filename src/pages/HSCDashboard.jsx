@@ -25,8 +25,8 @@ const HSCDashboard = () => {
         <ThemeToggle />
       </header>
 
-      {/* Main Content */}
-      <main className="flex flex-col items-center justify-center min-h-[80vh] px-4 sm:px-6">
+      {/* Main Content - Centered Layout */}
+      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-4 sm:px-6 pb-8">
         <div className="text-center mb-8 sm:mb-12 max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
             Choose Your Subject
@@ -36,46 +36,52 @@ const HSCDashboard = () => {
           </p>
         </div>
 
-        {/* Subject Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl w-full px-4">
-          {/* English 1st Paper */}
-          <div
-            onClick={() => navigate('/coming-soon')}
-            className="group cursor-pointer bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700"
-          >
-            <div className="text-center">
-              <div className="mb-6">
-                <PenTool className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 dark:text-green-400 mx-auto" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                ✍️ English 1st Paper
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
-                Reading comprehension, creative writing, and literature
-              </p>
-              <div className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-full text-xs sm:text-sm font-medium">
-                Coming Soon
+        {/* Subject Cards - Perfectly Centered */}
+        <div className="w-full max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-center justify-center">
+            {/* English 1st Paper */}
+            <div
+              onClick={() => navigate('/coming-soon')}
+              className="group cursor-pointer w-full max-w-sm md:max-w-none md:flex-1"
+            >
+              <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 h-full">
+                <div className="text-center">
+                  <div className="mb-6">
+                    <PenTool className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 dark:text-green-400 mx-auto" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    ✍️ English 1st Paper
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    Reading comprehension, creative writing, and literature analysis for HSC students
+                  </p>
+                  <div className="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-full text-sm font-medium">
+                    Coming Soon
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* English 2nd Paper */}
-          <div
-            onClick={() => navigate('/dashboard/hsc/english-2nd')}
-            className="group cursor-pointer bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700"
-          >
-            <div className="text-center">
-              <div className="mb-6">
-                <BookOpen className="w-12 h-12 sm:w-16 sm:h-16 text-blue-600 dark:text-blue-400 mx-auto" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                📘 English 2nd Paper
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
-                Grammar rules, sentence completion, and language skills
-              </p>
-              <div className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-xs sm:text-sm font-medium">
-                Available Now
+            {/* English 2nd Paper */}
+            <div
+              onClick={() => navigate('/dashboard/hsc/english-2nd')}
+              className="group cursor-pointer w-full max-w-sm md:max-w-none md:flex-1"
+            >
+              <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 h-full">
+                <div className="text-center">
+                  <div className="mb-6">
+                    <BookOpen className="w-12 h-12 sm:w-16 sm:h-16 text-blue-600 dark:text-blue-400 mx-auto" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    📘 English 2nd Paper
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    Grammar rules, sentence completion, and language skills with board questions
+                  </p>
+                  <div className="inline-block px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">
+                    Available Now
+                  </div>
+                </div>
               </div>
             </div>
           </div>
