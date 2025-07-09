@@ -86,31 +86,31 @@ const CompletingSentence = () => {
   const selectedRuleQuestions = selectedRule ? (categorizedQuestions.categorized[selectedRule] || []) : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 overflow-x-hidden">
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/dashboard/hsc/english-2nd')}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex-shrink-0"
               >
                 <ArrowLeft className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </button>
-              <div className="flex items-center space-x-3">
-                <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Completing Sentence Analyzer</h1>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Categorize board questions by grammar rules (2022-2024)</p>
+                  <h1 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight">Completing Sentence Analyzer</h1>
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Categorize board questions by grammar rules (2022-2024)</p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 sm:space-x-3 flex-wrap">
               <select
                 value={selectedYear || ''}
                 onChange={(e) => setSelectedYear(e.target.value ? parseInt(e.target.value) : null)}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="px-2 py-1 sm:px-3 sm:py-2 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
                 <option value="">All Years</option>
                 <option value="2022">2022</option>
@@ -120,7 +120,7 @@ const CompletingSentence = () => {
               <select
                 value={selectedBoard || ''}
                 onChange={(e) => setSelectedBoard(e.target.value || null)}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="px-2 py-1 sm:px-3 sm:py-2 text-sm sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
                 <option value="">All Boards</option>
                 {getUniqueBoards().map(board => (
@@ -133,10 +133,11 @@ const CompletingSentence = () => {
                   showCategorized 
                     ? 'bg-blue-600 text-white' 
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }`}
+                } text-sm sm:text-base`}
               >
-                <Filter className="h-4 w-4 inline mr-2" />
-                {showCategorized ? 'Show All' : 'Show Categorized'}
+                <Filter className="h-3 w-3 sm:h-4 sm:w-4 inline mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">{showCategorized ? 'Show All' : 'Show Categorized'}</span>
+                <span className="sm:hidden">{showCategorized ? 'All' : 'Rules'}</span>
               </button>
               <ThemeToggle />
             </div>
@@ -144,49 +145,49 @@ const CompletingSentence = () => {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
         {/* Stats Bar */}
-        <div className="mb-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="mb-4 sm:mb-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-3 sm:p-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{totalQuestions}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Total Questions</div>
+              <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">{totalQuestions}</div>
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Total Questions</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">{categorizedCount}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Categorized</div>
+              <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">{categorizedCount}</div>
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Categorized</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">{extraCount}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Extra</div>
+              <div className="text-xl sm:text-2xl font-bold text-orange-600 dark:text-orange-400">{extraCount}</div>
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Extra</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{Math.round((categorizedCount / totalQuestions) * 100)}%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Coverage</div>
+              <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">{Math.round((categorizedCount / totalQuestions) * 100)}%</div>
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Coverage</div>
             </div>
           </div>
         </div>
 
         {/* Search Bar */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="relative max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
               type="text"
               placeholder="Search questions or boards..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm sm:text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Rules Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-6">
+            <div className="lg:sticky lg:top-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Grammar Rules</h2>
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Grammar Rules</h2>
                 <button
                   onClick={() => setSortRulesByFrequency(!sortRulesByFrequency)}
                   className={`p-2 rounded-lg transition-colors ${
@@ -199,14 +200,14 @@ const CompletingSentence = () => {
                   <TrendingUp className="h-4 w-4" />
                 </button>
               </div>
-              <div className="space-y-2 max-h-96 overflow-y-auto">
+              <div className="space-y-2 max-h-64 lg:max-h-96 overflow-y-auto">
                 {sortedRules.map((rule) => {
                   const questionsForRule = categorizedQuestions.categorized[rule.id] || [];
                   const totalFrequency = ruleFrequency[rule.id] || 0;
                   return (
                     <div
                       key={rule.id}
-                      className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                      className={`p-2 sm:p-3 rounded-lg border cursor-pointer transition-colors ${
                         selectedRule === rule.id
                           ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700'
                           : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -214,24 +215,24 @@ const CompletingSentence = () => {
                       onClick={() => setSelectedRule(selectedRule === rule.id ? null : rule.id)}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                        <span className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400">
                           Rule {rule.id === 141 ? '14 (If)' : rule.id}
                         </span>
                         <div className="flex items-center space-x-1">
                           {questionsForRule.length > 0 && (
-                            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs px-2 py-1 rounded-full">
+                            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">
                               {questionsForRule.length}
                             </span>
                           )}
                           {sortRulesByFrequency && totalFrequency > 0 && (
-                            <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full">
+                            <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">
                               {totalFrequency}
                             </span>
                           )}
                         </div>
                       </div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">{rule.title}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">{rule.bengali}</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white mt-1 leading-tight">{rule.title}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">{rule.bengali}</p>
                     </div>
                   );
                 })}
@@ -242,29 +243,29 @@ const CompletingSentence = () => {
           {/* Main Content */}
           <div className="lg:col-span-3">
             {selectedRule ? (
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <RuleDisplay rule={selectedRuleData} />
                 
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                       Questions for Rule {selectedRule === 141 ? '14 (If)' : selectedRule}
                     </h3>
-                    <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm px-3 py-1 rounded-full">
+                    <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs sm:text-sm px-2 py-1 sm:px-3 rounded-full">
                       {selectedRuleQuestions.length} question{selectedRuleQuestions.length > 1 ? 's' : ''}
                     </span>
                   </div>
                   
                   {selectedRuleQuestions.length > 0 ? (
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       {selectedRuleQuestions.map((question) => (
-                        <div key={question.id} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div key={question.id} className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
-                              <p className="text-sm font-medium text-gray-900 dark:text-white">{question.question}</p>
+                              <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white text-responsive">{question.question}</p>
                               <div className="flex items-center space-x-2 mt-1">
-                                <p className="text-xs text-gray-600 dark:text-gray-400">{question.board}</p>
-                                <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-2 py-1 rounded">
+                                <p className="text-xs text-gray-600 dark:text-gray-400 truncate">{question.board}</p>
+                                <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                                   {question.year}
                                 </span>
                               </div>
@@ -275,12 +276,12 @@ const CompletingSentence = () => {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-gray-500 dark:text-gray-400 text-center py-8">No questions found for this rule with current filters.</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-center py-6 sm:py-8 text-sm">No questions found for this rule with current filters.</p>
                   )}
                 </div>
               </div>
             ) : showCategorized ? (
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 {/* Categorized Questions */}
                 {Object.entries(categorizedQuestions.categorized)
                   .sort(([a], [b]) => parseInt(a) - parseInt(b))
@@ -289,27 +290,27 @@ const CompletingSentence = () => {
                     if (!rule) return null;
                     
                     return (
-                      <div key={ruleId} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                      <div key={ruleId} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
                         <div className="flex items-center justify-between mb-4">
                           <div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white leading-tight">
                               Rule {rule.id === 141 ? '14 (If)' : rule.id}: {rule.title}
                             </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">{rule.bengali} - {rule.description}</p>
+                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{rule.bengali} - {rule.description}</p>
                           </div>
-                          <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm px-3 py-1 rounded-full">
+                          <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs sm:text-sm px-2 py-1 sm:px-3 rounded-full flex-shrink-0">
                             {questions.length} question{questions.length > 1 ? 's' : ''}
                           </span>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-2 sm:space-y-3">
                           {questions.map((question) => (
-                            <div key={question.id} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <div key={question.id} className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                               <div className="flex items-start justify-between">
                                 <div className="flex-1">
-                                  <p className="text-sm font-medium text-gray-900 dark:text-white">{question.question}</p>
+                                  <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white text-responsive">{question.question}</p>
                                   <div className="flex items-center space-x-2 mt-1">
-                                    <p className="text-xs text-gray-600 dark:text-gray-400">{question.board}</p>
-                                    <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-2 py-1 rounded">
+                                    <p className="text-xs text-gray-600 dark:text-gray-400 truncate">{question.board}</p>
+                                    <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                                       {question.year}
                                     </span>
                                   </div>
@@ -325,25 +326,25 @@ const CompletingSentence = () => {
 
                 {/* Extra Questions */}
                 {categorizedQuestions.extra.length > 0 && (
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Extra Questions</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Questions that don't follow specific rules</p>
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Extra Questions</h3>
+                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Questions that don't follow specific rules</p>
                       </div>
-                      <span className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-sm px-3 py-1 rounded-full">
+                      <span className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-xs sm:text-sm px-2 py-1 sm:px-3 rounded-full flex-shrink-0">
                         {categorizedQuestions.extra.length} question{categorizedQuestions.extra.length > 1 ? 's' : ''}
                       </span>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       {categorizedQuestions.extra.map((question) => (
-                        <div key={question.id} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div key={question.id} className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
-                              <p className="text-sm font-medium text-gray-900 dark:text-white">{question.question}</p>
+                              <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white text-responsive">{question.question}</p>
                               <div className="flex items-center space-x-2 mt-1">
-                                <p className="text-xs text-gray-600 dark:text-gray-400">{question.board}</p>
-                                <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-2 py-1 rounded">
+                                <p className="text-xs text-gray-600 dark:text-gray-400 truncate">{question.board}</p>
+                                <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                                   {question.year}
                                 </span>
                               </div>
@@ -357,38 +358,38 @@ const CompletingSentence = () => {
                 )}
               </div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                     All Board Questions 
                     {selectedYear && ` (${selectedYear})`}
                     {selectedBoard && ` - ${selectedBoard}`}
                   </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{filteredQuestions.length} questions</p>
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{filteredQuestions.length} questions</p>
                 </div>
                 
                 {filteredQuestions.map((question) => (
-                  <div key={question.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                  <div key={question.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-gray-900 dark:text-white mb-2">{question.question}</p>
-                        <div className="flex items-center space-x-3">
-                          <span className="text-xs text-gray-600 dark:text-gray-400">{question.board}</span>
-                          <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-2 py-1 rounded">
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-2 text-responsive">{question.question}</p>
+                        <div className="flex items-center space-x-2 sm:space-x-3 flex-wrap gap-1">
+                          <span className="text-xs text-gray-600 dark:text-gray-400 truncate">{question.board}</span>
+                          <span className="text-xs bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                             {question.year}
                           </span>
                           {question.ruleId && (
-                            <span className={`text-xs px-2 py-1 rounded-full border ${getRuleColor(question.ruleId)}`}>
+                            <span className={`text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full border ${getRuleColor(question.ruleId)} truncate max-w-xs`}>
                               Rule {question.ruleId === 141 ? '14 (If)' : question.ruleId}: {rules.find(r => r.id === question.ruleId)?.title}
                             </span>
                           )}
                         </div>
                       </div>
-                      <div className="ml-4 flex-shrink-0">
+                      <div className="ml-2 sm:ml-4 flex-shrink-0">
                         {question.ruleId ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
+                          <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
                         ) : (
-                          <Circle className="h-5 w-5 text-gray-400" />
+                          <Circle className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                         )}
                       </div>
                     </div>

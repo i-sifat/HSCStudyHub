@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import Homepage from './pages/Homepage';
@@ -9,6 +9,9 @@ import CompletingSentence from './pages/CompletingSentence';
 import ModifierTopic from './pages/ModifierTopic';
 import ConnectorsTopic from './pages/ConnectorsTopic';
 import ComingSoon from './pages/ComingSoon';
+import AboutUs from './pages/AboutUs';
+import Contribute from './pages/Contribute';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -24,6 +27,10 @@ function App() {
               <Route path="/dashboard/hsc/english-2nd/modifier" element={<ModifierTopic />} />
               <Route path="/dashboard/hsc/english-2nd/connectors" element={<ConnectorsTopic />} />
               <Route path="/coming-soon" element={<ComingSoon />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contribute" element={<Contribute />} />
+              <Route path="/404" element={<NotFound />} />
+              <Route path="*" element={<Navigate to="/404" replace />} />
             </Routes>
           </div>
         </Router>
