@@ -2,34 +2,119 @@ import { useEffect, useCallback, useState } from 'react';
 
 export const useContentProtection = () => {
   const [showWarning, setShowWarning] = useState(false);
-  const [warningMessage, setWarningMessage] = useState('');
 
-  const showProtectionWarning = useCallback((message) => {
-    setWarningMessage(message);
+  const showProtectionWarning = useCallback(() => {
     setShowWarning(true);
-    
-    // Auto hide after 5 seconds
-    setTimeout(() => {
-      setShowWarning(false);
-    }, 5000);
   }, []);
 
   // Disable right-click context menu
   const handleContextMenu = useCallback((e) => {
     e.preventDefault();
-    showProtectionWarning(
-      "❌ This website is made with hours of work. Don't just copy paste and break someone's motivation. Please contribute instead!"
-    );
+    showProtectionWarning();
     return false;
   }, [showProtectionWarning]);
 
   // Disable text selection and copy
   const handleCopy = useCallback((e) => {
     e.preventDefault();
-    showProtectionWarning(
-      "❌ Content copying is disabled. This platform represents countless hours of work. Please respect the effort and contribute positively!"
-    );
+    showProtectionWarning();
     return false;
+  }, [showProtectionWarning]);
+
+  // Enhanced mobile screenshot detection
+  const handleVisibilityChange = useCallback(() => {
+    // Mobile screenshot detection - when user takes screenshot, page becomes hidden briefly
+    if (document.hidden) {
+      // Additional mobile-specific checks
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        // On mobile, any visibility change could be a screenshot
+        setTimeout(() => {
+          if (!document.hidden) {
+            showProtectionWarning();
+          }
+        }, 50);
+      } else {
+        // Desktop behavior
+        setTimeout(() => {
+          if (!document.hidden) {
+            showProtectionWarning();
+          }
+        }, 100);
+      }
+    }
+  }, [showProtectionWarning]);
+
+  // Mobile-specific screenshot detection methods
+  const handleMobileScreenshotDetection = useCallback(() => {
+    // Method 1: Detect power + volume button combination (Android)
+    let powerPressed = false;
+    let volumePressed = false;
+    
+    const handleKeyDown = (e) => {
+      if (e.key === 'Power' || e.keyCode === 26) powerPressed = true;
+      if (e.key === 'VolumeDown' || e.keyCode === 25) volumePressed = true;
+      
+      if (powerPressed && volumePressed) {
+        showProtectionWarning();
+        powerPressed = false;
+        volumePressed = false;
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      if (e.key === 'Power' || e.keyCode === 26) powerPressed = false;
+      if (e.key === 'VolumeDown' || e.keyCode === 25) volumePressed = false;
+    };
+
+    // Method 2: Detect iOS screenshot (Home + Power button)
+    const handleTouchStart = (e) => {
+      if (e.touches.length >= 2) {
+        // Multiple touches might indicate screenshot gesture
+        setTimeout(() => {
+          showProtectionWarning();
+        }, 100);
+      }
+    };
+
+    // Method 3: Monitor for rapid app switching (screenshot sharing)
+    let focusChangeCount = 0;
+    const handleFocus = () => {
+      focusChangeCount++;
+      setTimeout(() => {
+        if (focusChangeCount > 0) focusChangeCount--;
+      }, 1000);
+      
+      if (focusChangeCount > 2) {
+        showProtectionWarning();
+      }
+    };
+
+    const handleBlur = () => {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        // On mobile, losing focus often means screenshot or app switch
+        setTimeout(() => {
+          showProtectionWarning();
+        }, 200);
+      }
+    };
+
+    // Add event listeners
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keyup', handleKeyUp);
+      document.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
+    };
   }, [showProtectionWarning]);
 
   // Detect keyboard shortcuts
@@ -47,57 +132,94 @@ export const useContentProtection = () => {
       (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c'))
     ) {
       e.preventDefault();
-      showProtectionWarning(
-        "❌ Developer tools and shortcuts are disabled. This website represents hours of dedicated work. Please don't copy content and contribute instead!"
-      );
+      showProtectionWarning();
       return false;
     }
 
     // Detect Print Screen
     if (e.key === 'PrintScreen') {
       e.preventDefault();
-      showProtectionWarning(
-        "📷 Screenshots are discouraged. This content is protected. Please respect the creator's effort and contribute to the platform!"
-      );
+      showProtectionWarning();
       return false;
-    }
-  }, [showProtectionWarning]);
-
-  // Detect visibility change (potential screenshot detection)
-  const handleVisibilityChange = useCallback(() => {
-    if (document.hidden) {
-      // User might be taking a screenshot or switched tabs
-      setTimeout(() => {
-        if (!document.hidden) {
-          showProtectionWarning(
-            "📷 Screenshot detected! This content is protected. Please respect the hours of work put into this platform."
-          );
-        }
-      }, 100);
     }
   }, [showProtectionWarning]);
 
   // Detect print attempts
   const handleBeforePrint = useCallback(() => {
-    showProtectionWarning(
-      "🖨️ Printing is disabled. This content is protected. Please respect the creator's work and contribute positively!"
-    );
+    showProtectionWarning();
   }, [showProtectionWarning]);
 
-  // Blur content when dev tools might be open
+  // Enhanced mobile detection for dev tools
   const handleResize = useCallback(() => {
     const threshold = 160;
-    if (
-      window.outerHeight - window.innerHeight > threshold ||
-      window.outerWidth - window.innerWidth > threshold
-    ) {
-      document.body.classList.add('dev-tools-open');
-      showProtectionWarning(
-        "🔧 Developer tools detected! Please close dev tools and respect the content protection."
-      );
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // On mobile, any significant size change might indicate screenshot or dev tools
+      if (
+        window.outerHeight - window.innerHeight > threshold ||
+        window.outerWidth - window.innerWidth > threshold
+      ) {
+        document.body.classList.add('dev-tools-open');
+        showProtectionWarning();
+      } else {
+        document.body.classList.remove('dev-tools-open');
+      }
     } else {
-      document.body.classList.remove('dev-tools-open');
+      // Desktop behavior
+      if (
+        window.outerHeight - window.innerHeight > threshold ||
+        window.outerWidth - window.innerWidth > threshold
+      ) {
+        document.body.classList.add('dev-tools-open');
+        showProtectionWarning();
+      } else {
+        document.body.classList.remove('dev-tools-open');
+      }
     }
+  }, [showProtectionWarning]);
+
+  // Mobile-specific touch and gesture detection
+  const handleTouchEvents = useCallback(() => {
+    let touchStartTime = 0;
+    let touchCount = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartTime = Date.now();
+      touchCount = e.touches.length;
+      
+      // Detect multi-touch gestures that might be screenshots
+      if (touchCount >= 3) {
+        e.preventDefault();
+        showProtectionWarning();
+      }
+    };
+
+    const handleTouchEnd = (e) => {
+      const touchDuration = Date.now() - touchStartTime;
+      
+      // Detect quick multi-touch (potential screenshot gesture)
+      if (touchCount >= 2 && touchDuration < 500) {
+        showProtectionWarning();
+      }
+    };
+
+    // Prevent long press context menu on mobile
+    const handleTouchMove = (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('touchmove', handleTouchMove);
+    };
   }, [showProtectionWarning]);
 
   useEffect(() => {
@@ -108,6 +230,10 @@ export const useContentProtection = () => {
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('beforeprint', handleBeforePrint);
     window.addEventListener('resize', handleResize);
+
+    // Initialize mobile-specific protections
+    const cleanupMobileDetection = handleMobileScreenshotDetection();
+    const cleanupTouchEvents = handleTouchEvents();
 
     // Disable drag and drop
     const handleDragStart = (e) => {
@@ -123,8 +249,25 @@ export const useContentProtection = () => {
     };
     document.addEventListener('dragover', handleDragOver);
 
+    // Mobile-specific: Disable text selection completely
+    const handleSelectStart = (e) => {
+      e.preventDefault();
+      return false;
+    };
+    document.addEventListener('selectstart', handleSelectStart);
+
     // Initial check for dev tools
     handleResize();
+
+    // Enhanced mobile screenshot detection using Page Visibility API
+    const handlePageHide = () => {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        showProtectionWarning();
+      }
+    };
+
+    window.addEventListener('pagehide', handlePageHide);
 
     // Cleanup
     return () => {
@@ -136,12 +279,16 @@ export const useContentProtection = () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('dragstart', handleDragStart);
       document.removeEventListener('dragover', handleDragOver);
+      document.removeEventListener('selectstart', handleSelectStart);
+      window.removeEventListener('pagehide', handlePageHide);
+      
+      cleanupMobileDetection();
+      cleanupTouchEvents();
     };
-  }, [handleContextMenu, handleCopy, handleKeyDown, handleVisibilityChange, handleBeforePrint, handleResize]);
+  }, [handleContextMenu, handleCopy, handleKeyDown, handleVisibilityChange, handleBeforePrint, handleResize, handleMobileScreenshotDetection, handleTouchEvents]);
 
   return {
     showWarning,
-    warningMessage,
     hideWarning: () => setShowWarning(false)
   };
 };

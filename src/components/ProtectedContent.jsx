@@ -1,10 +1,9 @@
 import React from 'react';
 import { useContentProtection } from '../hooks/useContentProtection';
-import ContentProtectionWarning from './ContentProtectionWarning';
-import ScreenshotOverlay from './ScreenshotOverlay';
+import ContentProtectionModal from './ContentProtectionModal';
 
 const ProtectedContent = ({ children, enableScreenshotProtection = true }) => {
-  const { showWarning, warningMessage, hideWarning } = useContentProtection();
+  const { showWarning, hideWarning } = useContentProtection();
 
   return (
     <div className="protected-content">
@@ -65,11 +64,8 @@ const ProtectedContent = ({ children, enableScreenshotProtection = true }) => {
       
       {children}
       
-      {enableScreenshotProtection && <ScreenshotOverlay />}
-      
-      <ContentProtectionWarning
+      <ContentProtectionModal
         show={showWarning}
-        message={warningMessage}
         onClose={hideWarning}
       />
     </div>

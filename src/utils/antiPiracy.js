@@ -153,9 +153,55 @@ export const monitorSuspiciousActivity = () => {
  */
 export const initializeFullProtection = () => {
   initializeAntiPiracy();
-  createWatermark();
   protectImages();
   monitorSuspiciousActivity();
+  
+  // Enhanced mobile screenshot protection
+  const initializeMobileProtection = () => {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // Disable screenshot on Android using meta tag
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'viewport';
+      metaTag.content = 'width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0';
+      document.head.appendChild(metaTag);
+      
+      // Add screenshot protection overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'screenshot-protection';
+      document.body.appendChild(overlay);
+      
+      // Disable context menu on mobile
+      document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+      }, { passive: false });
+      
+      // Disable text selection on mobile
+      document.addEventListener('selectstart', (e) => {
+        e.preventDefault();
+        return false;
+      }, { passive: false });
+      
+      // Monitor for screenshot attempts
+      let lastVisibilityChange = 0;
+      document.addEventListener('visibilitychange', () => {
+        const now = Date.now();
+        if (now - lastVisibilityChange < 1000 && document.hidden) {
+          // Potential screenshot detected
+          setTimeout(() => {
+            if (!document.hidden) {
+              console.warn('Potential screenshot attempt detected');
+            }
+          }, 100);
+        }
+        lastVisibilityChange = now;
+      });
+    }
+  };
+  
+  initializeMobileProtection();
   
   // Add a subtle message for legitimate users
   console.log('%c🛡️ Content Protection Active', 'color: #ff6b6b; font-size: 16px; font-weight: bold;');
