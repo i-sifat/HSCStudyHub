@@ -38,7 +38,7 @@ function App() {
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/contribute" element={<Contribute />} />
                 <Route path="/404" element={<NotFound />} />
-                <Route path="*" element={<Navigate to="/404" replace />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
           </Router>

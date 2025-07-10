@@ -26,11 +26,11 @@ const Contribute = () => {
     setIsSubmitting(true);
     
     // Create mailto link with form data
-    const subject = encodeURIComponent(`[English Subject Hub] ${formData.subject}`);
+    const subject = encodeURIComponent(`[Onushilon Hub] ${formData.subject}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
-    const mailtoLink = `mailto:info.studyhub@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:info.onushilonhub@gmail.com?subject=${subject}&body=${body}`;
     
     // Open email client
     window.location.href = mailtoLink;
@@ -126,7 +126,7 @@ const Contribute = () => {
               className="inline-flex items-center space-x-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium mb-6"
             >
               <Mail className="w-5 h-5" />
-              <span>info.studyhub@gmail.com</span>
+              <span>info.onushilonhub@gmail.com</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>

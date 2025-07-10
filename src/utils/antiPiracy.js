@@ -60,7 +60,7 @@ export const initializeAntiPiracy = () => {
 /**
  * Create a watermark overlay for content protection
  */
-export const createWatermark = (text = 'English Subject Hub - Protected') => {
+export const createWatermark = (text = 'Onushilon Hub - Protected') => {
   const watermark = document.createElement('div');
   watermark.innerHTML = text;
   watermark.style.cssText = `
@@ -204,6 +204,6 @@ export const initializeFullProtection = () => {
   initializeMobileProtection();
   
   // Add a subtle message for legitimate users
-  console.log('%c🛡️ Content Protection Active', 'color: #ff6b6b; font-size: 16px; font-weight: bold;');
+  console.log('%c🛡️ Onushilon Hub - Content Protection Active', 'color: #ff6b6b; font-size: 16px; font-weight: bold;');
   console.log('%cThis platform is protected to respect the creator\'s hard work. Please contribute positively!', 'color: #4ecdc4; font-size: 12px;');
 };

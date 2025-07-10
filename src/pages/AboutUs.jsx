@@ -29,7 +29,7 @@ const AboutUs = () => {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-            About English Subject Hub
+            About Onushilon Hub
           </h1>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 px-4 leading-relaxed">
             Empowering students with comprehensive grammar analysis and practice tools
@@ -81,7 +81,7 @@ const AboutUs = () => {
           
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              English Subject Hub was born from a simple yet powerful vision: to make grammar learning 
+              Onushilon Hub was born from a simple yet powerful vision: to make grammar learning 
               accessible, systematic, and effective for HSC students across Bangladesh. As a developer 
               and educator, I witnessed countless students struggling with English grammar rules, 
               especially when preparing for board examinations.

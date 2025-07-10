@@ -26,7 +26,7 @@ const NotFound = () => {
           </button>
           <div className="flex items-center space-x-2 sm:space-x-3">
             <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-red-600 dark:text-red-400 flex-shrink-0" />
-            <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">English Subject Hub</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">Onushilon Hub</span>
           </div>
         </div>
         <ThemeToggle />
@@ -119,7 +119,7 @@ const NotFound = () => {
               The key is to learn from the detour and find the right path forward."
             </p>
             <p className="text-xs text-red-600 dark:text-red-400 mt-2">
-              — English Subject Hub Team
+              — Onushilon Hub Team
             </p>
           </div>
         </div>

@@ -22,7 +22,7 @@ const ScreenshotOverlay = () => {
       
       for (let x = 0; x < canvas.width; x += 100) {
         for (let y = 0; y < canvas.height; y += 100) {
-          ctx.fillText('English Subject Hub - Protected Content', x, y);
+          ctx.fillText('Onushilon Hub - Protected Content', x, y);
         }
       }
       

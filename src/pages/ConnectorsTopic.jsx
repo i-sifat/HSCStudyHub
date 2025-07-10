@@ -165,7 +165,7 @@ const ConnectorsTopic = () => {
               <div className="flex items-center space-x-3">
                 <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Connectors Practice</h1>
+                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Onushilon Hub - Connectors</h1>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Master sentence connectors with board questions (2016-2024)</p>
                 </div>
               </div>

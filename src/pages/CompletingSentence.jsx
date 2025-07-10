@@ -101,7 +101,7 @@ const CompletingSentence = () => {
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                 <div>
-                  <h1 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight">Completing Sentence Analyzer</h1>
+                  <h1 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight">Onushilon Hub - Completing Sentence</h1>
                   <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 hidden sm:block">Categorize board questions by grammar rules (2022-2024)</p>
                 </div>
               </div>

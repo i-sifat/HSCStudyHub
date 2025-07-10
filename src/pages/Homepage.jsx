@@ -20,7 +20,7 @@ const Homepage = () => {
       <header className="relative z-10 flex justify-between items-center p-4 sm:p-6">
         <div className="flex items-center space-x-3">
           <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-          <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">English Subject Hub</span>
+          <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">Onushilon Hub</span>
         </div>
         
         <div className="flex items-center space-x-4">
@@ -33,12 +33,12 @@ const Homepage = () => {
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-4 sm:px-6">
         {/* Hero Section with Single-line Dynamic Text */}
         <div className="text-center mb-20 sm:mb-24 max-w-6xl mx-auto mt-8 sm:mt-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-            <span className="block mb-2">Your Gateway to</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 font-extrabold tracking-wide">
-              English <AnimatedText />
-            </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+            Your Gateway to English
           </h1>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 tracking-wide">
+            <AnimatedText />
+          </h2>
         </div>
 
         {/* Main Action Cards - SSC and HSC */}
