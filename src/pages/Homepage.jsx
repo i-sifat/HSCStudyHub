@@ -6,6 +6,7 @@ import AuthButton from '../components/AuthButton';
 import MobileReminder from '../components/MobileReminder';
 import AntiPiracyNotice from '../components/AntiPiracyNotice';
 import AnimatedBackground from '../components/AnimatedBackground';
+import AnimatedText from '../components/AnimatedText';
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -30,60 +31,34 @@ const Homepage = () => {
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-4 sm:px-6">
-        {/* Hero Section with Inspirational Tagline */}
-        <div className="text-center mb-16 sm:mb-20 max-w-4xl mx-auto">
-          <div className="mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-8 shadow-lg animate-pulse">
-              <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
-            </div>
-            
-            {/* Inspirational Tagline */}
-            <div className="mb-8 p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 mb-4 leading-tight">
-                "Learning is the key that unlocks infinite possibilities"
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 font-medium">
-                Master English grammar with confidence and excel in your academic journey
-              </p>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Your Gateway to
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                English Excellence
-              </span>
-            </h1>
-          </div>
-          
-          {/* Welcome Message */}
-          <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-200/50 dark:border-gray-700/50 mb-12">
-            <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-              Welcome to your dedicated learning companion! Master English grammar through 
-              <span className="text-blue-600 dark:text-blue-400 font-semibold"> board-wise analysis</span>, 
-              past paper questions, and interactive practice tools designed for your success.
-            </p>
-          </div>
+        {/* Hero Section with Single-line Dynamic Text */}
+        <div className="text-center mb-20 sm:mb-24 max-w-6xl mx-auto mt-8 sm:mt-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+            <span className="block mb-2">Your Gateway to</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 font-extrabold tracking-wide">
+              English <AnimatedText />
+            </span>
+          </h1>
         </div>
 
         {/* Main Action Cards - SSC and HSC */}
-        <div className="w-full max-w-5xl mx-auto mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="w-full max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {/* SSC Card */}
             <div
               onClick={() => navigate('/coming-soon')}
               className="group cursor-pointer transform transition-all duration-300 hover:scale-105"
             >
-              <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-3xl p-8 sm:p-10 shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 h-full">
+              <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 h-full">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mb-8 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <School className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <School className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
                     SSC English
                   </h3>
-                  <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                    Build a strong foundation in English grammar for Secondary School Certificate. 
-                    Comprehensive practice materials and structured learning path for academic success.
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    Get ready for SSC with past exam questions and simple analysis rules. Practice easily and build confidence for success!
                   </p>
                   <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full text-sm font-medium shadow-lg">
                     <span>Coming Soon</span>
@@ -97,20 +72,19 @@ const Homepage = () => {
               onClick={() => navigate('/dashboard/hsc')}
               className="group cursor-pointer transform transition-all duration-300 hover:scale-105"
             >
-              <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-3xl p-8 sm:p-10 shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 h-full">
+              <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 h-full">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-8 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <GraduationCap className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
                     HSC English
                   </h3>
-                  <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                    Master Higher Secondary English with board questions from 2022-2024. 
-                    Complete grammar analysis, sentence completion, modifiers, connectors, and more.
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    Master HSC English with board questions, grammar rule analysis, understand concepts and more.
                   </p>
                   <div className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-                    <span className="text-lg">Start Learning</span>
+                    <span className="text-base">Start Learning</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -122,7 +96,7 @@ const Homepage = () => {
         {/* Footer Section */}
         <div className="text-center text-gray-500 dark:text-gray-400 pb-8 mt-auto">
           <div className="flex flex-col items-center space-y-4">
-            <p className="text-sm sm:text-base font-medium">Made with ☘️ by iSiFAT for students like you.</p>
+            <p className="text-sm sm:text-base font-medium">Made with ☘️ by iSiFAT</p>
             <div className="flex items-center space-x-6 text-sm">
               <button
                 onClick={() => navigate('/about')}
