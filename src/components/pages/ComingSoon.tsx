@@ -33,7 +33,7 @@ const ComingSoon = () => {
               Coming Soon!
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              We're working hard to bring you this feature. Stay tuned for updates!
+              We&apos;re working hard to bring you this feature. Stay tuned for updates!
             </p>
           </div>
 

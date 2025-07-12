@@ -95,7 +95,7 @@ const Contribute = () => {
             <h3 className="text-xl font-bold mb-3">Why Contribute?</h3>
             <p className="text-blue-100 mb-4">
               Every contribution, no matter how small, helps thousands of HSC students across Bangladesh. 
-              By sharing your knowledge and resources, you're building a stronger educational community.
+              By sharing your knowledge and resources, you&apos;re building a stronger educational community.
             </p>
             <p className="text-blue-100">
               Together, we can make quality education accessible to everyone and help students achieve their dreams.

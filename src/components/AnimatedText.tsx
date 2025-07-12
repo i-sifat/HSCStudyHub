@@ -28,7 +28,7 @@ const AnimatedText = () => {
     }, 2500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <span className={`inline-block transition-all duration-300 ${

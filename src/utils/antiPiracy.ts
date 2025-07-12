@@ -125,5 +125,5 @@ export const initializeFullProtection = () => {
   
   // Add a subtle message for legitimate users
   console.log('%c🛡️ Onushilon Hub - Content Protection Active', 'color: #ff6b6b; font-size: 16px; font-weight: bold;');
-  console.log('%cThis platform is protected to respect the creator\'s hard work. Please contribute positively!', 'color: #4ecdc4; font-size: 12px;');
+  console.log('%cThis platform is protected to respect the creator&apos;s hard work. Please contribute positively!', 'color: #4ecdc4; font-size: 12px;');
 };

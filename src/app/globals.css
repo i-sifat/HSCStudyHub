@@ -128,7 +128,7 @@ img {
   }
   
   body::before {
-    content: "🖨️ This content is protected and cannot be printed. Please respect the creator's work and contribute to the platform instead. Visit: Onushilon Hub";
+    content: "🖨️ This content is protected and cannot be printed. Please respect the creator&apos;s work and contribute to the platform instead. Visit: Onushilon Hub";
     display: block !important;
     font-size: 24px !important;
     text-align: center !important;
