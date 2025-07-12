@@ -5,13 +5,9 @@ import { initializeFullProtection } from '@/utils/antiPiracy';
 
 interface ProtectedContentProps {
   children: React.ReactNode;
-  enableScreenshotProtection?: boolean;
 }
 
-const ProtectedContent: React.FC<ProtectedContentProps> = ({ 
-  children, 
-  enableScreenshotProtection = true 
-}) => {
+const ProtectedContent: React.FC<ProtectedContentProps> = ({ children }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       initializeFullProtection();

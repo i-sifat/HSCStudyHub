@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, BookOpen } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 
-const CompletingSentence = () => {
+const ConnectorsTopic = () => {
   const router = useRouter();
 
   return (
@@ -21,7 +21,7 @@ const CompletingSentence = () => {
           </button>
           <div className="flex items-center space-x-3">
             <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />
-            <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Completing Sentence</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Connectors</span>
           </div>
         </div>
         <ThemeToggle />
@@ -32,48 +32,46 @@ const CompletingSentence = () => {
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-xl">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              ✍️ Completing Sentence
+              🔗 Connectors
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Master sentence completion with conditional clauses, time expressions, and logical connections
+              Master linking words, conjunctions, and transitional phrases for better writing
             </p>
           </div>
 
           <div className="prose dark:prose-invert max-w-none">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              What is Sentence Completion?
+              What are Connectors?
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Sentence completion involves finishing incomplete sentences with appropriate words, phrases, 
-              or clauses that maintain grammatical correctness and logical meaning.
+              Connectors are words or phrases that link ideas, sentences, and paragraphs together. 
+              They help create smooth transitions and logical flow in writing.
             </p>
 
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-              Common Types
+              Types of Connectors
             </h3>
             
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
                 <h4 className="text-lg font-semibold text-blue-800 dark:text-blue-300 mb-3">
-                  Conditional Sentences
+                  Addition
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p><strong>If clause:</strong> If I study hard, ___</p>
-                  <p><strong>Answer:</strong> I will pass the exam.</p>
-                  <p><strong>Unless:</strong> Unless you hurry, ___</p>
-                  <p><strong>Answer:</strong> you will miss the bus.</p>
+                  <p>• and, also, furthermore</p>
+                  <p>• moreover, in addition</p>
+                  <p>• besides, as well as</p>
                 </div>
               </div>
 
               <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl">
                 <h4 className="text-lg font-semibold text-green-800 dark:text-green-300 mb-3">
-                  Time Expressions
+                  Contrast
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p><strong>When:</strong> When I reached home, ___</p>
-                  <p><strong>Answer:</strong> my mother was cooking.</p>
-                  <p><strong>Before:</strong> Before going to bed, ___</p>
-                  <p><strong>Answer:</strong> I always brush my teeth.</p>
+                  <p>• but, however, nevertheless</p>
+                  <p>• on the other hand</p>
+                  <p>• although, despite</p>
                 </div>
               </div>
 
@@ -82,22 +80,20 @@ const CompletingSentence = () => {
                   Cause & Effect
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p><strong>Since:</strong> Since it was raining, ___</p>
-                  <p><strong>Answer:</strong> we stayed indoors.</p>
-                  <p><strong>So that:</strong> I study hard so that ___</p>
-                  <p><strong>Answer:</strong> I can get good marks.</p>
+                  <p>• because, since, as</p>
+                  <p>• therefore, consequently</p>
+                  <p>• as a result, due to</p>
                 </div>
               </div>
 
               <div className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
                 <h4 className="text-lg font-semibold text-orange-800 dark:text-orange-300 mb-3">
-                  Comparison
+                  Time & Sequence
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p><strong>As...as:</strong> He is as tall as ___</p>
-                  <p><strong>Answer:</strong> his father.</p>
-                  <p><strong>Than:</strong> This book is better than ___</p>
-                  <p><strong>Answer:</strong> that one.</p>
+                  <p>• first, then, finally</p>
+                  <p>• before, after, while</p>
+                  <p>• meanwhile, subsequently</p>
                 </div>
               </div>
             </div>
@@ -115,19 +111,6 @@ const CompletingSentence = () => {
                 </p>
               </div>
             </div>
-
-            <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-red-800 dark:text-red-300 mb-4">
-                💡 Tips for Success
-              </h3>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                <li>• Read the incomplete sentence carefully</li>
-                <li>• Identify the type of completion needed</li>
-                <li>• Ensure grammatical correctness</li>
-                <li>• Maintain logical meaning</li>
-                <li>• Practice with past board questions</li>
-              </ul>
-            </div>
           </div>
         </div>
       </main>
@@ -135,4 +118,4 @@ const CompletingSentence = () => {
   );
 };
 
-export default CompletingSentence;
+export default ConnectorsTopic;

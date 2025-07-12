@@ -21,7 +21,7 @@ export const initializeAntiPiracy = () => {
     ];
 
     indicators.forEach(indicator => {
-      if (navigator.mediaDevices && (navigator.mediaDevices as any)[indicator]) {
+      if (navigator.mediaDevices && (navigator.mediaDevices as Record<string, unknown>)[indicator]) {
         console.warn('Screen recording capability detected');
       }
     });

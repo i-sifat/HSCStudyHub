@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Shield, Heart, Users, AlertTriangle } from 'lucide-react';
+import { Shield, Heart, Users } from 'lucide-react';
 
 const AntiPiracyNotice = () => {
   const [showNotice, setShowNotice] = useState(false);

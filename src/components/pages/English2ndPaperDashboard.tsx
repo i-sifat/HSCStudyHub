@@ -6,6 +6,15 @@ import { ArrowLeft, BookOpen, Search } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 import { hsc2ndPaperTopics } from '@/data/hsc_2ndpaper_topics';
 
+interface Topic {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  route: string;
+  color: string;
+}
+
 const English2ndPaperDashboard = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,7 +24,7 @@ const English2ndPaperDashboard = () => {
     topic.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleTopicClick = (topic: any) => {
+  const handleTopicClick = (topic: Topic) => {
     if (topic.route === '/coming-soon') {
       router.push('/coming-soon');
     } else {

@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <AuthProvider>
-            <ProtectedContent enableScreenshotProtection={true}>
+            <ProtectedContent>
               {children}
               <Analytics />
               <SpeedInsights />

@@ -47,7 +47,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const register = async (email: string, password: string, name: string): Promise<User> => {
-    // Simulate registration
+    // Simulate registration - password validation would happen here in real implementation
+    if (!password || password.length < 6) {
+      throw new Error('Password must be at least 6 characters');
+    }
     const userData = { email, name };
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
